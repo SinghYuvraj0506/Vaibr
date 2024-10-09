@@ -24,13 +24,10 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(
-                `${import.meta.env.VITE_EXPRESS_URL}/api/user/login`,
-                {
-                    email,
-                    password,
-                }
-            );
+            const response = await axios.post(`${import.meta.env.VITE_EXPRESS_URL}/api/user/login`, {
+                email,
+                password,
+            });
             const data = response.data;
             if (data?.success) {
                 toast.success(data.msg, { autoClose: 1000, hideProgressBar: true });

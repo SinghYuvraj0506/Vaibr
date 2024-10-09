@@ -12,7 +12,7 @@ connectDB();
 // middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors({ origin: process.env.REACT_URL }));
+app.use(cors());
 
 /* routes */
 
@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
 
 app.post("/api/user/register", userController.registerUser);
 app.post("/api/user/login", userController.loginUser);
+app.post("/api/user/verifyOtp", userController.verifyOtp);
 
 app.use("/", (req, res) => {
     res.status(404).json({ message: "route not found" });
